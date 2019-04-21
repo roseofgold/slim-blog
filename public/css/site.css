@@ -24,13 +24,13 @@ header .logo {
 	border: 5px solid #000;
 	text-decoration: none;
 	color: #000;
-	font-size: 21px;
+	font-size: 1.5rem;
 	font-weight: bold;
 	padding: 5px 10px;
 	margin: 24px 0 0 0;
 	float: left;
-	text-transform: uppercase;
-	font-family: 'Noto Sans', sans-serif;
+	/* text-transform: uppercase; */
+	font-family: 'Berkshire Swash', cursive;
 }
 header .new-entry {
 	float: right;

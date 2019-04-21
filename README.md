@@ -26,6 +26,9 @@ This is project for unit 5 of Treehouse's PHP TechDegree
     - [ ] routing uses slugs (Bonus)
 - [ ] Code is properly commented
 
+## Customization
+* Used different fonts from Google
+
 ## Support
 Contact: roseofgold@gmail.com
 
