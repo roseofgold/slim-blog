@@ -21,4 +21,18 @@ return function (App $app) {
         // Render index view
         return $container->get('renderer')->render($response, 'detail.phtml', $args);
     });
+    $app->get('/new', function (Request $request, Response $response, array $args) use ($container) {
+        // Sample log message
+        $container->get('logger')->info("Slim-Skeleton '/' route");
+
+        // Render index view
+        return $container->get('renderer')->render($response, 'new.phtml', $args);
+    });
+    $app->get('/edit', function (Request $request, Response $response, array $args) use ($container) {
+        // Sample log message
+        $container->get('logger')->info("Slim-Skeleton '/' route");
+
+        // Render index view
+        return $container->get('renderer')->render($response, 'edit.phtml', $args);
+    });
 };

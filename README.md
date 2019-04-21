@@ -21,8 +21,8 @@ This is project for unit 5 of Treehouse's PHP TechDegree
 - [ ] Fonts have colors and faces
 - [ ] Header fonts are larger than body fonts
 - [ ] Routes are mapped correctly
-    - [ ] index mapped as '/','/blogs'
-    - [ ] detail mapped as '/blog/{id}', 'entries/{name}'
+    - [x] index mapped as '/'
+    - [x] detail mapped as '/blog/{id}'
     - [ ] routing uses slugs (Bonus)
 - [ ] Code is properly commented
 
