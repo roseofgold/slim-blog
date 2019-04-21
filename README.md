@@ -12,8 +12,8 @@ This is project for unit 5 of Treehouse's PHP TechDegree
 - [ ] Add/Edit page to post new blog or edit existing
 - [ ] Anonymous user can post comment to page
 - [ ] Blog model has list of entries
-- [ ] Comments modle has list of comments
-- [ ] PDO connect to the database
+- [ ] Comments model has list of comments
+- [x] PDO connect to the database
 - [ ] PDO retrieves blog entries
 - [ ] PDO adds new blog entries
 - [ ] PDO deletes blog entries (Bonus)
@@ -22,7 +22,7 @@ This is project for unit 5 of Treehouse's PHP TechDegree
 - [ ] Header fonts are larger than body fonts
 - [ ] Routes are mapped correctly
     - [ ] index mapped as '/','/blogs'
-    - [ ] detail mapped as '/blog/{id}', 'entries/{name}
+    - [ ] detail mapped as '/blog/{id}', 'entries/{name}'
     - [ ] routing uses slugs (Bonus)
 - [ ] Code is properly commented
 
