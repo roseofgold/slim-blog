@@ -80,7 +80,7 @@ class BlogEntry
         foreach ($entryShort as $key) {
           $tags = getTags($key['id']);
           echo "<article>";
-          echo "<h2><a href=\"detail.php?id=" . $key['id'] . "\">" . $key['title'] . "</a></h2>";
+          echo "<h2><a href=\"/blog/" . $key['id'] . "\">" . $key['title'] . "</a></h2>";
           echo "<time datetime=\"" . $key['date'] . "\">" . date('F j, Y',strtotime($key['date'])) . "</time>";
           echo "<div>";
           if(!empty($tags)){
