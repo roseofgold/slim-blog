@@ -1,11 +1,14 @@
 <?php include __DIR__ . '/header.phtml'; ?>
     <div class="container">
         <div class="entry-list">
-            <article>
-                <h2><a href="/blog/<?php echo $args['id']; ?>"><?php echo $title ?></a></h2>
-                <time datetime="<?php echo $args['date']; ?>"><?php echo $args['date']; ?></time>
-            </article>
-        
+        <?php
+            foreach ($posts as $post) {
+                echo '<article>';
+                echo "<h2><a href=\"/blog/" . $post['id'] . "\">" . $post['title'] . "</a></h2>";
+                echo "<time datetime=\"" . $post['date'] . "\">" . $post['date'] . '</time>';
+                echo '</article>';
+            }
+        ?>
             <article>
                 <h2><a href="/blog/1">The best day I’ve ever had</a></h2>
                 <time datetime="2016-01-31 1:00">January 31, 2016 at 1:00</time>

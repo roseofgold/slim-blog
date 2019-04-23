@@ -23,7 +23,7 @@ return function (App $app) {
                 exit;
             }
             $results->execute();
-            $args = $results->fetchAll(PDO::FETCH_ASSOC);
+            $args['posts'] = $results->fetchAll(PDO::FETCH_ASSOC);
             
             // Render index view
             return $container->get('renderer')->render($response, 'index.phtml', $args);
