@@ -6,7 +6,7 @@ class BlogEntry
 {
     private $blogTitle,$blogEntry,$postDate,$blogLink;
     
-    public function __construct(string $blogTitle = NULL, string $blogEntry = NULL, string $postDate, string $blogLink)
+    public function __construct(string $blogTitle = NULL, string $blogEntry = NULL, string $postDate = NULL, string $blogLink = NULL)
     {
         if ($blogTitle == NULL || !empty($blogTitle)) {
             $this->blogTitle = '';
