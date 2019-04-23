@@ -18,7 +18,8 @@ return [
         
         // Database connection settings
         "db" => [
-            "path" => __DIR__ . "/../db/blog.db"
+            'dsn' => 'sqlite',
+            "database" => __DIR__ . "/../db/blog.db"
         ],
     ],
 ];
