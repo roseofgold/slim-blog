@@ -10,8 +10,13 @@ if (PHP_SAPI == 'cli-server') {
 }
 
 require __DIR__ . '/../vendor/autoload.php';
+include __DIR__ . '/../src/classes/blogentry.php';
+include __DIR__ . '/../src/classes/blogcomments.php';
 
 session_start();
+
+$blogEntry = new BlogEntry();
+$blogComments = new BlogComments();
 
 // Instantiate the app
 $settings = require __DIR__ . '/../src/settings.php';
