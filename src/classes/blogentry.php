@@ -73,9 +73,28 @@ class BlogEntry
         $this->blogLink = $blogLink;
     }
 
-    public function displayShortEntries(string $tag = NULL)
+    public function getEntryShort(){
+        $sql = 'SELECT DISTINCT entries.title, entries.date, entries.id FROM entries
+            JOIN entries_tags ON entries.id = entries_tags.entry_id
+            JOIN tags ON entries_tags.tag_id = tags.tag_id';
+        
+        $orderby = ' ORDER BY date DESC';
+        
+        try{
+            $results = $db->prepare($sql . $orderby);
+        } catch (Exception $e){
+            echo "Unable to retrieve results.";
+            exit;
+        }
+        $results->execute();
+        
+        $entries = $results->fetchAll();
+        return $entries;
+    }
+    
+    public function displayShortEntries()
     {
-        $entryShort = getEntryShort($tag);
+        $entryShort = getEntryShort();
 
         foreach ($entryShort as $key) {
           $tags = getTags($key['id']);
