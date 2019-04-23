@@ -24,39 +24,45 @@ return function (App $app) {
             }
             $results->execute();
             $args = $results->fetchAll(PDO::FETCH_ASSOC);
-
+            
             // Render index view
             return $container->get('renderer')->render($response, 'index.phtml', $args);
         }
     );
-    // $app->get(
-    //     '/blog/{id}',
-    //     function (Request $request, Response $response, array $args) use ($container) {
-    //         // Sample log message
-    //         $container->get('logger')->info("Slim-Skeleton '/' route");
+    $app->get(
+        '/blog/{id}',
+        function (Request $request, Response $response, array $args) use ($container) {
+            // Sample log message
+            $container->get('logger')->info("Slim-Skeleton '/' route");
+            
+            // Get ID to aid is display of entry
+            $id = $request->getAttribute('id');
 
-    //         // Render index view
-    //         return $container->get('renderer')->render($response, 'detail.phtml', $args);
-    //     }
-    // );
-    // $app->get(
-    //     '/new',
-    //     function (Request $request, Response $response, array $args) use ($container) {
-    //         // Sample log message
-    //         $container->get('logger')->info("Slim-Skeleton '/' route");
+            // Render index view
+            return $container->get('renderer')->render($response, 'detail.phtml', $args);
+        }
+    );
+    $app->get(
+        '/new',
+        function (Request $request, Response $response, array $args) use ($container) {
+            // Sample log message
+            $container->get('logger')->info("Slim-Skeleton '/' route");
 
-    //         // Render index view
-    //         return $container->get('renderer')->render($response, 'new.phtml', $args);
-    //     }
-    // );
-    // $app->get(
-    //     '/edit',
-    //     function (Request $request, Response $response, array $args) use ($container) {
-    //         // Sample log message
-    //         $container->get('logger')->info("Slim-Skeleton '/' route");
+            // Render index view
+            return $container->get('renderer')->render($response, 'new.phtml', $args);
+        }
+    );
+    $app->get(
+        '/edit/{id}',
+        function (Request $request, Response $response, array $args) use ($container) {
+            // Sample log message
+            $container->get('logger')->info("Slim-Skeleton '/' route");
 
-    //         // Render index view
-    //         return $container->get('renderer')->render($response, 'edit.phtml', $args);
-    //     }
-    // );
+            // Get ID to aid is display of entry
+            $id = $request->getAttribute('id');
+
+            // Render index view
+            return $container->get('renderer')->render($response, 'edit.phtml', $args);
+        }
+    );
 };
