@@ -7,35 +7,47 @@ use Slim\Http\Response;
 return function (App $app) {
     $container = $app->getContainer();
 
-    $app->get('/', function (Request $request, Response $response, array $args) use ($container) {
-        // Sample log message
-        $container->get('logger')->info("Slim-Skeleton '/' route");
+    $app->get(
+        '/', 
+        function (Request $request, Response $response, array $args) use ($container) {
+            // Sample log message
+            $container->get('logger')->info("Slim-Skeleton '/' route");
 
-        //connect to database
-        $container->get('db');
+            //connect to database
+            $container->get('db');
 
-        // Render index view
-        return $container->get('renderer')->render($response, 'index.phtml', $args);
-    });
-    $app->get('/blog/{id}', function (Request $request, Response $response, array $args) use ($container) {
-        // Sample log message
-        $container->get('logger')->info("Slim-Skeleton '/' route");
+            // Render index view
+            return $container->get('renderer')->render($response, 'index.phtml', $args);
+        }
+    );
+    $app->get(
+        '/blog/{id}',
+        function (Request $request, Response $response, array $args) use ($container) {
+            // Sample log message
+            $container->get('logger')->info("Slim-Skeleton '/' route");
 
-        // Render index view
-        return $container->get('renderer')->render($response, 'detail.phtml', $args);
-    });
-    $app->get('/new', function (Request $request, Response $response, array $args) use ($container) {
-        // Sample log message
-        $container->get('logger')->info("Slim-Skeleton '/' route");
+            // Render index view
+            return $container->get('renderer')->render($response, 'detail.phtml', $args);
+        }
+    );
+    $app->get(
+        '/new',
+        function (Request $request, Response $response, array $args) use ($container) {
+            // Sample log message
+            $container->get('logger')->info("Slim-Skeleton '/' route");
 
-        // Render index view
-        return $container->get('renderer')->render($response, 'new.phtml', $args);
-    });
-    $app->get('/edit', function (Request $request, Response $response, array $args) use ($container) {
-        // Sample log message
-        $container->get('logger')->info("Slim-Skeleton '/' route");
+            // Render index view
+            return $container->get('renderer')->render($response, 'new.phtml', $args);
+        }
+    );
+    $app->get(
+        '/edit',
+        function (Request $request, Response $response, array $args) use ($container) {
+            // Sample log message
+            $container->get('logger')->info("Slim-Skeleton '/' route");
 
-        // Render index view
-        return $container->get('renderer')->render($response, 'edit.phtml', $args);
-    });
+            // Render index view
+            return $container->get('renderer')->render($response, 'edit.phtml', $args);
+        }
+    );
 };
