@@ -46,6 +46,8 @@ return function (App $app) {
             return $container->get('renderer')->render($response, 'detail.phtml', $args);
         }
     );
+
+    // route to new blog entry
     $app->get(
         '/new',
         function (Request $request, Response $response, array $args) use ($container) {
@@ -56,6 +58,8 @@ return function (App $app) {
             return $container->get('renderer')->render($response, 'new.phtml', $args);
         }
     );
+
+    // route to edit blog entry
     $app->get(
         '/edit/{id}',
         function (Request $request, Response $response, array $args) use ($container) {
