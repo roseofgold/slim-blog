@@ -14,12 +14,12 @@ This is project for unit 5 of Treehouse's PHP TechDegree
 - [ ] Blog model has list of entries
 - [ ] Comments model has list of comments
 - [x] PDO connect to the database
-- [ ] PDO retrieves blog entries
+- [x] PDO retrieves blog entries
 - [ ] PDO adds new blog entries
 - [ ] PDO deletes blog entries (Bonus)
-- [ ] CSS styles in separate file
+- [x] CSS styles in separate file
 - [ ] Fonts have colors and faces
-- [ ] Header fonts are larger than body fonts
+- [x] Header fonts are larger than body fonts
 - [ ] Routes are mapped correctly
     - [x] index mapped as '/'
     - [x] detail mapped as '/blog/{id}'
@@ -28,6 +28,7 @@ This is project for unit 5 of Treehouse's PHP TechDegree
 
 ## Customization
 * Used different fonts from Google
+* Installed ckeditor for html based blog entries
 
 ## Support
 Contact: roseofgold@gmail.com
