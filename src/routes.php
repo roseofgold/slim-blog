@@ -16,6 +16,7 @@ return function (App $app) {
 
             // connect to database
             $db = $container->get('db');
+
             // Select all posts for display
             $sql = "SELECT * FROM posts";
             try{
@@ -41,6 +42,22 @@ return function (App $app) {
             
             // Get ID to aid is display of entry
             $id = $request->getAttribute('id');
+
+            // connect to database
+            $db = $container->get('db');
+
+            // select specific post to display
+            $sql = "SELECT * FROM posts";
+            $sql .= " WHERE id = ?";
+            try {
+                $results = $db->prepare($sql);
+                $results->bindParam(1,$id);
+            } catch (Exception $e) {
+                echo "Unable to retrieve results: " . $e->getMessage();
+                exit;
+            }
+            $results->execute();
+            $args['posts'] = $results->fetch(PDO::FETCH_ASSOC);
 
             // Render index view
             return $container->get('renderer')->render($response, 'detail.phtml', $args);
