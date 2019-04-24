@@ -78,8 +78,8 @@ return function (App $app) {
             $db = $container->get('db');
 
             // select specific post to display
-            $sql = "SELECT * FROM posts";
-            $sql .= " WHERE id = ?";
+            $sql = "SELECT * FROM posts ";
+            $sql .= "WHERE id = ?";
             try {
                 $results = $db->prepare($sql);
                 $results->bindParam(1,$id);
@@ -89,6 +89,18 @@ return function (App $app) {
             }
             $results->execute();
             $args['posts'] = $results->fetch(PDO::FETCH_ASSOC);
+
+            // select comments on specific post
+            $sql = "SELECT * FROM comments AS c JOIN posts_comments AS pc ON c.id = pc.comment_id JOIN posts AS p ON pc.post_id = p.id WHERE p.id = ?";
+            try {
+                $results = $db->prepare($sql);
+                $results->bindValue(1,$id);
+            } catch (Exception $e) {
+                echo "Unable to retrieve results: " . $e->getMessage();
+                exit;
+            }
+            $results->execute();
+            $args['comments'] = $results->fetchAll(PDO::FETCH_ASSOC);
 
             // Render index view
             return $container->get('renderer')->render($response, 'edit.phtml', $args);
