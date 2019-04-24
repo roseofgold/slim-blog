@@ -10,7 +10,7 @@
                     echo "<time datetime=\"" . $posts['date'] . "\">" . date('F j, Y \a\t H:i',strtotime($posts['date'])) . '</time>';
                     echo "<div class=\"entry\">";
                         echo $posts['body'];
-                        echo "<p><a class=\"link\" href=\"/edit\">Edit Entry</a></p>";
+                        echo "<p><a class=\"link\" href=\"/edit/" . $posts['id'] . "\">Edit Entry</a></p>";
                     echo "</div>";
                 echo '</article>';
             }
