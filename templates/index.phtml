@@ -2,11 +2,15 @@
     <div class="container">
         <div class="entry-list">
         <?php
-            foreach ($posts as $post) {
-                echo '<article>';
-                echo "<h2><a href=\"/blog/" . $post['id'] . "\">" . $post['title'] . "</a></h2>";
-                echo "<time datetime=\"" . $post['date'] . "\">" . date('F j, Y',$post['date']) . ' at ' . date('H:i',$post['date']) . '</time>';
-                echo '</article>';
+            if (empty($posts)) {
+                echo 'Sorry, There are no posts yet';
+            } else {
+                foreach ($posts as $post) {
+                    echo '<article>';
+                    echo "<h2><a href=\"/blog/" . $post['id'] . "\">" . $post['title'] . "</a></h2>";
+                    echo "<time datetime=\"" . $post['date'] . "\">" . date('F j, Y',$post['date']) . ' at ' . date('H:i',$post['date']) . '</time>';
+                    echo '</article>';
+                }
             }
         ?>
         </div>
