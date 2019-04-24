@@ -7,14 +7,16 @@ use Slim\Http\Response;
 return function (App $app) {
     $container = $app->getContainer();
 
+    // route to main page
     $app->get(
         '/', 
         function (Request $request, Response $response, array $args) use ($container) {
             // Sample log message
             $container->get('logger')->info("Slim-Skeleton '/' route");
 
-            //connect to database
+            // connect to database
             $db = $container->get('db');
+            // Select all posts for display
             $sql = "SELECT * FROM posts";
             try{
                 $results = $db->query($sql);
@@ -29,6 +31,8 @@ return function (App $app) {
             return $container->get('renderer')->render($response, 'index.phtml', $args);
         }
     );
+
+    // route to blog entry
     $app->get(
         '/blog/{id}',
         function (Request $request, Response $response, array $args) use ($container) {

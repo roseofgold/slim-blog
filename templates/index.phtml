@@ -5,26 +5,10 @@
             foreach ($posts as $post) {
                 echo '<article>';
                 echo "<h2><a href=\"/blog/" . $post['id'] . "\">" . $post['title'] . "</a></h2>";
-                echo "<time datetime=\"" . $post['date'] . "\">" . $post['date'] . '</time>';
+                echo "<time datetime=\"" . $post['date'] . "\">" . date('F j, Y',$post['date']) . ' at ' . date('H:i',$post['date']) . '</time>';
                 echo '</article>';
             }
         ?>
-            <article>
-                <h2><a href="/blog/1">The best day I’ve ever had</a></h2>
-                <time datetime="2016-01-31 1:00">January 31, 2016 at 1:00</time>
-            </article>
-            <article>
-                <h2><a href="/blog/2">The absolute worst day I’ve ever had</a></h2>
-                <time datetime="2016-01-31 1:00">January 31, 2016 at 1:00</a></time>
-            </article>
-            <article>
-                <h2><a href="/blog/3">That time at the mall</a></h2>
-                <time datetime="2016-01-31 1:00">January 31, 2016 at 1:00</a></time>
-            </article>
-            <article>
-                <h2><a href="/blog/4">Dude, where’s my car?</a></h2>
-                <time datetime="2016-01-31 1:00">January 31, 2016 at 1:00</a></time>
-            </article>
         </div>
     </div>
 <?php include __DIR__ . '/footer.phtml'; ?>
