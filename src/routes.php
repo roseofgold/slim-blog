@@ -50,9 +50,21 @@ return function (App $app) {
     );
 
     // route to edit blog entry
-    $app->get(
+    $app->map(
+        ['GET','POST'],
         '/edit/{id}',
         function (Request $request, Response $response, array $args) use ($container) {
+            if ($request->getMethod() == 'POST') {
+            }
+
+            // prevent crossite issues
+            $nameKey = $this->csrf->getTokenNameKey();
+            $valueKey =$this->csrf-> getTokenValueKey();
+            $args['csrf'] = [
+                $nameKey => $request->getAttribute($nameKey),
+                $valueKey => $request->getAttribute($valueKey)
+            ];
+            
             // Sample log message
             $container->get('logger')->info("Slim-Skeleton '/' route");
 
