@@ -32,5 +32,10 @@ return function (App $app) {
     // Instantiate BlogEntry
     $container['entry'] = function($c) {
         return new BlogEntry($c->get('db'));
-    };    
+    };
+    
+    // Instantiate BlogComments
+    $container['comment'] = function($c) {
+        return new BlogComments($c->get('db'));
+    }; 
 };
