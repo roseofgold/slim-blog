@@ -17,17 +17,9 @@ return function (App $app) {
             // connect to database
             $db = $container->get('db');
 
-            // Select all posts for display
-            $sql = "SELECT * FROM posts";
-            try{
-                $results = $db->query($sql);
-            } catch (Exception $e){
-                echo "Unable to retrieve results.";
-                exit;
-            }
-            $results->execute();
-            $args['posts'] = $results->fetchAll(PDO::FETCH_ASSOC);
-            
+            // display posts
+            $args['posts'] = $this->entry->getEntries($db);
+
             // Render index view
             return $container->get('renderer')->render($response, 'index.phtml', $args);
         }

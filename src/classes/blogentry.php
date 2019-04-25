@@ -7,8 +7,9 @@ class BlogEntry
     public function getEntries($db)
     {
         $sql = "SELECT * FROM posts";
+        $orderby = ' ORDER BY date DESC';
         try {
-            $results = $db->prepare($sql);
+            $results = $db->prepare($sql . $orderby);
         } catch (Exception $e) {
             echo "Unable to retrieve entries";
         }
