@@ -8,11 +8,11 @@
             // echo out blog post
             } else {
                 echo '<article>';
-                    echo "<h2>" . $posts['title'] . "</h2>";
-                    echo "<time datetime=\"" . $posts['date'] . "\">" . date('F j, Y \a\t H:i',strtotime($posts['date'])) . '</time>';
+                    echo "<h2>" . $posts[0]['title'] . "</h2>";
+                    echo "<time datetime=\"" . $posts[0]['date'] . "\">" . date('F j, Y \a\t H:i',strtotime($posts[0]['date'])) . '</time>';
                     echo "<div class=\"entry\">";
-                        echo $posts['body'];
-                        echo "<p><a class=\"link\" href=\"/edit/" . $posts['id'] . "\">Edit Entry</a></p>";
+                        echo $posts[0]['body'];
+                        echo "<p><a class=\"link\" href=\"/edit/" . $posts[0]['id'] . "\">Edit Entry</a></p>";
                     echo "</div>";
                 echo '</article>';
             }

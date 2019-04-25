@@ -4,12 +4,17 @@
  */
 class BlogEntry  
 {
-    public function getEntries($db)
+    public function getEntries($db,$id=NULL)
     {
         $sql = "SELECT * FROM posts";
+        if ($id!=NULL) {
+            $where = " WHERE id=" . $id;
+        } else {
+            $where = "";
+        }
         $orderby = ' ORDER BY date DESC';
         try {
-            $results = $db->prepare($sql . $orderby);
+            $results = $db->prepare($sql . $where . $orderby);
         } catch (Exception $e) {
             echo "Unable to retrieve entries";
         }
