@@ -22,4 +22,23 @@ class BlogEntry
 
         return $entries = $results->fetchAll();
     }
+
+    public function editEntry($db,$id,$title,$body)
+    {        
+        $sql = 'UPDATE posts SET title = ?, body = ? WHERE id = ?';
+
+        try{
+          $results = $db->prepare($sql);
+          $results->bindValue(1,$title,PDO::PARAM_STR);
+          $results->bindValue(2,$body,PDO::PARAM_STR);
+          $results->bindValue(3,$id,PDO::PARAM_INT);
+        } catch (Exception $e){
+          echo "Unable to retrieve results: " . $e->getMessage();
+          exit;
+        }
+        $results->execute();
+      
+        return $results;
+      
+    }
 }
