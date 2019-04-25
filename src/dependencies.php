@@ -29,5 +29,8 @@ return function (App $app) {
         return $pdo;
     };
     
-
+    // Instantiate BlogEntry
+    $container['entry'] = function($c) {
+        return new BlogEntry($c->get('db'));
+    };    
 };
