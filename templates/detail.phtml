@@ -32,7 +32,7 @@
                     foreach ($comments as $comment) {
                         echo '<div class="comment">';
                             echo '<strong>' . $comment['name'] . '</strong>';
-                            echo '<time datetime="' . $comment['date_time'] . '">' . date('F j, Y \a\t H:i',strtotime($comment['date'])) . '</time>';
+                            echo '<time datetime="' . $comment['date_time'] . '">' . date('F j, Y \a\t H:i',strtotime($comment['date_time'])) . '</time>';
                             echo $comment['body'];
                         echo '</div>';
                     }
