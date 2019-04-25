@@ -37,5 +37,10 @@ return function (App $app) {
     // Instantiate BlogComments
     $container['comment'] = function($c) {
         return new BlogComments();
-    }; 
+    };
+
+    // csrf
+    $container['csrf'] = function ($c) {
+        return new \Slim\Csrf\Guard;
+    };
 };
