@@ -12,7 +12,7 @@ return function (App $app) {
         '/', 
         function (Request $request, Response $response, array $args) use ($container) {
             // Sample log message
-            $container->get('logger')->info("Slim-Skeleton '/' route");
+            // $container->get('logger')->info("Slim-Skeleton '/' route");
 
             // connect to database
             $db = $container->get('db');
@@ -29,12 +29,12 @@ return function (App $app) {
     $app->get(
         '/blog/{id}',
         function (Request $request, Response $response, array $args) use ($container) {
-            // Sample log message
-            $container->get('logger')->info("Slim-Skeleton '/' route");
-            
             // Get ID to aid is display of entry
             $id = $request->getAttribute('id');
 
+            // Sample log message
+            // $container->get('logger')->info("Slim-Skeleton '/blog/$id' route");
+            
             // connect to database
             $db = $container->get('db');
 
@@ -54,9 +54,24 @@ return function (App $app) {
         ['GET','POST'],
         '/edit/{id}',
         function (Request $request, Response $response, array $args) use ($container) {
-            if ($request->getMethod() == 'POST') {
-            }
+            // connect to database
+            $db = $container->get('db');
 
+            // Get ID to aid is display of entry
+            $id = $request->getAttribute('id');
+            
+            if ($request->getMethod() == 'POST') {
+                $args = array_merge($args, $request->getParsedBody());
+                
+                // use posted data to update an entry
+                $edit = $this->entry->editEntry($db,$args['id'],$args['title'],$args['body']);
+
+                // log the edited post's title
+                $container->get('logger')->notice('Edited Blog: '.$args['title']);
+
+                return $response->withStatus(302)->withHeader('Location', '/blog/' . $args['id']);
+            }
+            
             // prevent crossite issues
             $nameKey = $this->csrf->getTokenNameKey();
             $valueKey =$this->csrf-> getTokenValueKey();
@@ -65,17 +80,11 @@ return function (App $app) {
                 $valueKey => $request->getAttribute($valueKey)
             ];
             
-            // Sample log message
-            $container->get('logger')->info("Slim-Skeleton '/' route");
-
-            // Get ID to aid is display of entry
-            $id = $request->getAttribute('id');
-            
-            // connect to database
-            $db = $container->get('db');
-
             // display posts
             $args['posts'] = $this->entry->getEntries($db,$id);
+
+            // Sample log message
+            // $container->get('logger')->info("Slim-Skeleton '/edit' route");
 
             // Render index view
             return $container->get('renderer')->render($response, 'edit.phtml', $args);
@@ -87,7 +96,7 @@ return function (App $app) {
         '/new',
         function (Request $request, Response $response, array $args) use ($container) {
             // Sample log message
-            $container->get('logger')->info("Slim-Skeleton '/' route");
+            $container->get('logger')->info("Slim-Skeleton '/new' route");
 
             // Render index view
             return $container->get('renderer')->render($response, 'new.phtml', $args);
