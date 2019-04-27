@@ -99,6 +99,21 @@ return function (App $app) {
             // connect to database
             $db = $container->get('db');
 
+            if ($request->getMethod() == 'POST') {
+                $args = array_merge($args, $request->getParsedBody());
+                
+                // use posted data to add an entry
+                $addEntry = $this->entry->addEntry($db,$args['title'],$args['body']);
+
+                // log the added post's title
+                $container->get('logger')->notice('Added New Blog: '.$args['title']);
+
+                //get the id of the recently added post
+                $entryID = $this->entry->getEntryID($args['title']);
+
+                return $response->withStatus(302)->withHeader('Location', '/blog/' . $entryID);
+            }            
+
             // prevent crossite issues
             $nameKey = $this->csrf->getTokenNameKey();
             $valueKey =$this->csrf-> getTokenValueKey();
