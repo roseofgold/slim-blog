@@ -30,14 +30,17 @@ return function (App $app) {
         ['GET','POST'],
         '/blog/{id}',
         function (Request $request, Response $response, array $args) use ($container) {
+            // connect to database
+            $db = $container->get('db');
+
             // Get ID to aid is display of entry
             $id = $request->getAttribute('id');
 
             if ($request->getMethod() == 'POST') {
-                $args = array_merge($args,$request->getParsedBody);
+                $args = array_merge($args,$request->getParsedBody());
 
                 // use posted data to enter comment and attach to blog
-                $newComment = $this->comment->enterComment($db,$args['name'],$args['comment'],$args['id']);
+                $newComment = $this->comment->enterComment($db,$args['name'],$args['comment'],$id);
 
                 // log the edited post's title
                  $container->get('logger')->notice('Comment Added');
@@ -46,9 +49,14 @@ return function (App $app) {
             // log blog post visit
             // $container->get('logger')->info("Slim-Skeleton '/blog/$id' route");
             
-            // connect to database
-            $db = $container->get('db');
-
+            // prevent crossite issues
+            $nameKey = $this->csrf->getTokenNameKey();
+            $valueKey =$this->csrf-> getTokenValueKey();
+            $args['csrf'] = [
+                $nameKey => $request->getAttribute($nameKey),
+                $valueKey => $request->getAttribute($valueKey)
+            ];
+            
             // display posts
             $args['posts'] = $this->entry->getEntries($db,$id);
 
