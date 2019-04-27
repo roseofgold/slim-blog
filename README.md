@@ -2,20 +2,23 @@
 This is project for unit 5 of Treehouse's PHP TechDegree
 
 ## Features
-- [ ] Index page shows 3 blog entries with title and date/time created (Bonus for showing tags)
+- [ ] Index page shows:
+    - [x] 3 blog entries with title and date/time created
+    - [ ] Showing tags (Bonus)
 - [ ] Detail Page shows:
-    - [ ] Title
-    - [ ] Date
-    - [ ] Body
-    - [ ] Comments
+    - [x] Title
+    - [x] Date
+    - [x] Body
+    - [x] Comments
     - [ ] Tags (Bonus)
-- [ ] Add/Edit page to post new blog or edit existing
+- [x] Add page to post new blog 
+- [x] Edit page edit existing blog
 - [ ] Anonymous user can post comment to page
 - [ ] Blog model has list of entries
 - [ ] Comments model has list of comments
 - [x] PDO connect to the database
 - [x] PDO retrieves blog entries
-- [ ] PDO adds new blog entries
+- [x] PDO adds new blog entries
 - [ ] PDO deletes blog entries (Bonus)
 - [x] CSS styles in separate file
 - [ ] Fonts have colors and faces
@@ -28,7 +31,6 @@ This is project for unit 5 of Treehouse's PHP TechDegree
 
 ## Customization
 * Used different fonts from Google
-* Installed ckeditor for html based blog entries
 
 ## Support
 Contact: roseofgold@gmail.com
