@@ -41,4 +41,23 @@ class BlogEntry
         return $results;
       
     }
+
+    public function addEntry($db,$title,$body)
+    {
+        $sql = 'INSERT INTO posts (title,body,date) VALUES (?,?,?)';
+
+        try {
+            $results=$db->prepare($sql);
+            $results->bindValue(1,$title,PDO::PARAM_STR);
+            $results->bindValue(2,$body,PDO::PARAM_STR);
+            $results->bindValue(3,date('Y-m-d H:i'),PDO::PARAM_STR);
+        } catch (Exception $e) {
+            echo "Unable to add entry: " . $e->getMessage();
+            exit;
+        }
+
+        $results->execute();
+
+        return $results;
+    }
 }
