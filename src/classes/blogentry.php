@@ -63,7 +63,7 @@ class BlogEntry
 
     public function getEntryId($title)
     {
-        $sql = "SELECT id FROM posts WHERE title=?";
+        $sql = "SELECT id FROM posts WHERE title=? ORDERBY date LIMIT 1";
 
         try {
             $results=$db->prepare($sql);
