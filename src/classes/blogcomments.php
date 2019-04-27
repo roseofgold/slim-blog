@@ -36,15 +36,18 @@ class BlogComments
             echo "Unable to enter comment into database: " . $e->getMessage();
             exit;
         }
-        $results->execute();
+        return $results->execute();
+    }
 
+    public function getCommentID($db,$name,$commentBody)
+    {
         // retrieve comment's id
-        $sql = "SELECT id FROM comments WHERE name=? AND date_time = ?";
+        $sql = "SELECT id FROM comments WHERE name=? AND  body = ?";
 
         try {
             $results = $db->prepare($sql);
             $results->bindParam(1,$name,PDO::PARAM_STR);
-            $results->bindParam(2,$date_time,PDO::PARAM_STR);
+            $results->bindParam(2,$commentBody,PDO::PARAM_STR);
         } catch (Exception $e) {
             echo "Unable to retrieve comment's id: " . $e->getMessage();
             exit;
@@ -52,9 +55,11 @@ class BlogComments
 
         $results->execute();
 
-        $comment_id = $results->fetch(PDO::FETCH_ASSOC);
+        return $comment_id = $results->fetch(PDO::FETCH_ASSOC);
+    }
 
-
+    public function connectCommentPost($db,$id,$comment_id)
+    {
         // connect comment to blog
         $sql = "INSERT INTO posts_comments (post_id,comment_id) VALUES (?,?)";
 
@@ -66,6 +71,6 @@ class BlogComments
             echo "Unable to connect comment to post: " . $e->getMessage();
             exit;
         }
-        $results->execute();
+        return $results->execute();
     }
 }

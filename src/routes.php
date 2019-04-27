@@ -39,11 +39,20 @@ return function (App $app) {
             if ($request->getMethod() == 'POST') {
                 $args = array_merge($args,$request->getParsedBody());
 
-                // use posted data to enter comment and attach to blog
+                // use posted data to enter comment
                 $newComment = $this->comment->enterComment($db,$args['name'],$args['comment'],$id);
 
                 // log the edited post's title
-                 $container->get('logger')->notice('Comment Added');
+                $container->get('logger')->notice('Comment by '.$args['name'].' Added');
+
+                // retrieve comment id
+                $comment_id = $this->comment->getCommentID($db,$args['name'],$args['comment']);
+
+                // log the id
+                $container->get('logger')->notice('ID of comment is '.$comment_id['id']);
+
+                // connect the comment to the post
+                $post_comment = $this->comment->connectCommentPost($db,$id,$comment_id);
             }
 
             // log blog post visit
