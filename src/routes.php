@@ -50,9 +50,10 @@ return function (App $app) {
 
                 // log the id
                 $container->get('logger')->notice('ID of comment is '.$comment_id['id']);
+                $container->get('logger')->notice('ID of post is '.$id);
 
                 // connect the comment to the post
-                $post_comment = $this->comment->connectCommentPost($db,$id,$comment_id);
+                $post_comment = $this->comment->connectCommentPost($db,$id,$comment_id['id']);
             }
 
             // log blog post visit
