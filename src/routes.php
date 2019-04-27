@@ -92,9 +92,21 @@ return function (App $app) {
     );
 
     // route to new blog entry
-    $app->get(
+    $app->map(
+        ['GET','POST'],
         '/new',
         function (Request $request, Response $response, array $args) use ($container) {
+            // connect to database
+            $db = $container->get('db');
+
+            // prevent crossite issues
+            $nameKey = $this->csrf->getTokenNameKey();
+            $valueKey =$this->csrf-> getTokenValueKey();
+            $args['csrf'] = [
+                $nameKey => $request->getAttribute($nameKey),
+                $valueKey => $request->getAttribute($valueKey)
+            ];
+
             // Sample log message
             $container->get('logger')->info("Slim-Skeleton '/new' route");
 
