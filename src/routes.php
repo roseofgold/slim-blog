@@ -11,7 +11,7 @@ return function (App $app) {
     $app->get(
         '/', 
         function (Request $request, Response $response, array $args) use ($container) {
-            // Sample log message
+            // Log home page visit
             // $container->get('logger')->info("Slim-Skeleton '/' route");
 
             // connect to database
@@ -33,7 +33,17 @@ return function (App $app) {
             // Get ID to aid is display of entry
             $id = $request->getAttribute('id');
 
-            // Sample log message
+            if ($request->getMethod() == 'POST') {
+                $args = array_merge($args,$request->getParsedBody);
+
+                // use posted data to enter comment and attach to blog
+                $newComment = $this->comment->enterComment($db,$args['name'],$args['comment'],$args['id']);
+
+                // log the edited post's title
+                 $container->get('logger')->notice('Comment Added');
+            }
+
+            // log blog post visit
             // $container->get('logger')->info("Slim-Skeleton '/blog/$id' route");
             
             // connect to database
@@ -68,7 +78,7 @@ return function (App $app) {
                 $edit = $this->entry->editEntry($db,$args['id'],$args['title'],$args['body']);
 
                 // log the edited post's title
-                $container->get('logger')->notice('Edited Blog: '.$args['title']);
+                // $container->get('logger')->notice('Edited Blog: '.$args['title']);
 
                 return $response->withStatus(302)->withHeader('Location', '/blog/' . $args['id']);
             }
@@ -84,7 +94,7 @@ return function (App $app) {
             // display posts
             $args['posts'] = $this->entry->getEntries($db,$id);
 
-            // Sample log message
+            // Log blog edit page visit
             // $container->get('logger')->info("Slim-Skeleton '/edit' route");
 
             // Render index view
@@ -107,7 +117,7 @@ return function (App $app) {
                 $addEntry = $this->entry->addEntry($db,$args['title'],$args['body']);
 
                 // log the added post's title
-                $container->get('logger')->notice('Added New Blog: '.$args['title']);
+                // $container->get('logger')->notice('Added New Blog: '.$args['title']);
 
                 //get the id of the recently added post
                 $entryID = $this->entry->getEntryID($db,$args['title']);
@@ -123,8 +133,8 @@ return function (App $app) {
                 $valueKey => $request->getAttribute($valueKey)
             ];
 
-            // Sample log message
-            $container->get('logger')->info("Slim-Skeleton '/new' route");
+            // log visit to new blog post page
+            //$container->get('logger')->info("Slim-Skeleton '/new' route");
 
             // Render index view
             return $container->get('renderer')->render($response, 'new.phtml', $args);
