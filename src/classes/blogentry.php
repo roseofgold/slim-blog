@@ -60,4 +60,21 @@ class BlogEntry
 
         return $results;
     }
+
+    public function getEntryId($title)
+    {
+        $sql = "SELECT id FROM posts WHERE title=?";
+
+        try {
+            $results=$db->prepare($sql);
+            $results->bindValue(1,$title,PDO::PARAM_STR);
+        } catch (Exception $e) {
+            echo "Unable to retrieve entry's id: " . $e->getMessage();
+            exit;
+        }
+
+        $results->execute();
+
+        return $entries = $results->fetch(PDO::FETCH_ASSOC);
+    }
 }
