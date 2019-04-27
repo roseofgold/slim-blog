@@ -109,9 +109,9 @@ return function (App $app) {
                 $container->get('logger')->notice('Added New Blog: '.$args['title']);
 
                 //get the id of the recently added post
-                $entryID = $this->entry->getEntryID($args['title']);
+                $entryID = $this->entry->getEntryID($db,$args['title']);
 
-                return $response->withStatus(302)->withHeader('Location', '/blog/' . $entryID);
+                return $response->withStatus(302)->withHeader('Location', '/blog/' . $entryID['id']);
             }            
 
             // prevent crossite issues
