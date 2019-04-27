@@ -47,7 +47,7 @@ class BlogEntry
         $sql = 'INSERT INTO posts (title,body,date) VALUES (?,?,?)';
 
         try {
-            $results=$db->prepare($sql);
+            $results = $db->prepare($sql);
             $results->bindValue(1,$title,PDO::PARAM_STR);
             $results->bindValue(2,$body,PDO::PARAM_STR);
             $results->bindValue(3,date('Y-m-d H:i'),PDO::PARAM_STR);
@@ -61,13 +61,13 @@ class BlogEntry
         return $results;
     }
 
-    public function getEntryId($title)
+    public function getEntryID($db,$title)
     {
-        $sql = "SELECT id FROM posts WHERE title=? ORDERBY date LIMIT 1";
+        $sql = "SELECT id FROM posts WHERE title=? ORDER BY date LIMIT 1";
 
         try {
-            $results=$db->prepare($sql);
-            $results->bindValue(1,$title,PDO::PARAM_STR);
+            $results = $db->prepare($sql);
+            $results->bindParam(1,$title,PDO::PARAM_STR);
         } catch (Exception $e) {
             echo "Unable to retrieve entry's id: " . $e->getMessage();
             exit;
