@@ -56,7 +56,7 @@ class BlogComments
 
 
         // connect comment to blog
-        $sql = "INSERT INTO posts_comments (post_id,comment_id VALUES (?,?)";
+        $sql = "INSERT INTO posts_comments (post_id,comment_id) VALUES (?,?)";
 
         try {
             $results = $db->prepare($sql);
