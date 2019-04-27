@@ -26,7 +26,8 @@ return function (App $app) {
     );
 
     // route to blog entry
-    $app->get(
+    $app->map(
+        ['GET','POST'],
         '/blog/{id}',
         function (Request $request, Response $response, array $args) use ($container) {
             // Get ID to aid is display of entry
