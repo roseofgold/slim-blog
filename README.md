@@ -13,7 +13,7 @@ This is project for unit 5 of Treehouse's PHP TechDegree
     - [ ] Tags (Bonus)
 - [x] Add page to post new blog 
 - [x] Edit page edit existing blog
-- [ ] Anonymous user can post comment to page
+- [x] Anonymous user can post comment to page
 - [ ] Blog model has list of entries
 - [ ] Comments model has list of comments
 - [x] PDO connect to the database
