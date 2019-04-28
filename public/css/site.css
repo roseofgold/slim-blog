@@ -4,16 +4,13 @@
    Global Styles
    ========================================================================== */
 body {
-	background: url(../../concepts/JavaTechdegree_SparkBlog_1.jg) top center no-repeat;
-	font-size: 15px;
 	color: #000;
 	font-family: 'Noto Serif', Georgia, serif;
-	background: #444;
+	background: rosybrown;
 }
 .container {
 	margin: 0 auto;
 	padding: 0 25px;
-	background: #FFF;
 }
 header .site-header {
 	border-bottom: 1px solid #d1d1d1;
@@ -21,30 +18,31 @@ header .site-header {
 	height: 95px;
 }
 header .logo {
-	border: 5px solid #000;
+	border: 5px solid aliceblue;
 	text-decoration: none;
-	color: #000;
+	color: purple;
 	font-size: 1.5rem;
 	font-weight: bold;
+	letter-spacing: .1em;
 	padding: 5px 10px;
 	margin: 24px 0 0 0;
 	float: left;
-	/* text-transform: uppercase; */
-	font-family: 'Berkshire Swash', cursive;
+	font-family: 'Cinzel', cursive;
 }
 header .new-entry {
 	float: right;
 	margin: 25px 0 0 0;
 }
 footer {
-	background: #444;
+	background: rosybrown;
 	height: 30px;
 	text-align: center;
 	padding: 35px 0;
-	color: #999;
+	color: purple;
+	border-top: 1px solid aliceblue;
 }
 footer a {
-	color: #999;
+	color: purple;
 	text-decoration: none;
 	border-bottom: 2px solid #666;
 	padding-bottom: 1px;
@@ -94,6 +92,8 @@ h3 {
 	margin: 0;
 	font-weight: bold;
 	line-height: 1.2em;
+	font-family: "Cinzel",sans-serif;
+	color: purple;
 }
 h1 {
 	font-size: 44px;
@@ -106,8 +106,9 @@ h3 {
 	font-size: 28px;
 }
 p {
-	font-size: 15px;
 	line-height: 1.8em;
+	font-family: 'Sunshiney',serif;
+	font-size: 1.15em;
 }
 p a {
 	border-bottom: 2px solid #c1c1c1;
@@ -116,7 +117,6 @@ p a {
 a.link {
 	font-weight: bold;
 	text-transform: uppercase;
-	font-size: 14px;
 	padding-bottom: 1px;
 	font-family: 'Noto Sans', sans-serif;
 }
@@ -152,10 +152,9 @@ a.link {
 }
 .entry-list article a {
 	text-decoration: none;
-	color: #000;
 }
 .entry-list time {
-	color: #888;
+	color: aliceblue;
 }
 .entry-list.single {
 	padding-bottom: 30px;
@@ -165,16 +164,12 @@ a.link {
 }
 .entry {
 	max-width: 700px;
-	margin: 75px auto 0 auto;
+	margin: 2em auto 0 auto;
 	text-align: left;
-}
-.entry p {
-	font-size: 18px;
-	margin-bottom: 40px;
 }
 .entry-comments {
 	background: #f1f1f1;
-	padding: 70px 0;
+	padding: 50px 0;
 }
 .entry-comments .container {
 	background: transparent;
@@ -187,7 +182,6 @@ a.link {
 }
 .entry-comments h2 {
 	border-bottom: 1px solid #c1c1c1;
-	padding-bottom: 35px;
 }
 .comment {
 	border-top: 1px solid #c1c1c1;
@@ -203,7 +197,7 @@ a.link {
 }
 .new-comment .container {
 	max-width: 700px;
-	margin: 0 auto;
+	margin: 5px auto;
 }
 
 
@@ -215,7 +209,7 @@ a.link {
 
 .entry-comments form {
 	border-top: 1px solid #c1c1c1;
-	padding: 50px 0;
+	padding: 20px 0;
 	margin-top: 2px;
 }
 form label {
@@ -224,7 +218,7 @@ form label {
 	font-weight: bold;
 	text-transform: uppercase;
 	font-size: 14px;
-	margin-bottom: 5px;
+	margin: 0 20px 5px;
 }
 form input[type=text],
 form input[type=password],
@@ -233,7 +227,7 @@ form textarea {
 	font-size: 18px;
 	line-height: 1.8em;
 	padding:10px 13px;
-	margin-bottom: 30px;
+	margin: 0 20px 30px;
 	border-radius: 4px;
 	width: calc(100% - 32px);
 }
