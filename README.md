@@ -1,5 +1,4 @@
 # Build a Blog with Slim
-This is project for unit 5 of Treehouse's PHP TechDegree
 
 ## Features
 - [ ] Index page shows:
